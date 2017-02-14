@@ -2,9 +2,57 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var device = mongoose.model('device');
 var device_user = mongoose.model('device_user');
-
+const kue = require('kue-scheduler');
+const queue = kue.createQueue();
 //-------------------------------------------------------------------------------------------------------//
 
+module.exports.delayTest = function(req, res){
+
+
+
+
+//console.log(res.headers);
+   
+
+
+  /*  var job = queue.create('myQueue',{
+        from : 'user',
+        type : 'message',
+        data : {
+            msg: 'This is first attempt to queue'
+        }
+    }).save(function (err) {
+        if(err){
+            console.log(err);
+        }
+        else
+        console.log(job.id);
+         console.log("success") ;
+res.status(200).json({
+            "message": job.id
+        });    });
+   
+*/
+var job = ({
+    from: req.payload._id,
+    type: 'message',
+    data: {
+        device: req.body.device_id,
+        state: req.body.state
+    }
+});
+//console.log(job.from);
+
+var job = queue.createJob('myQueue', job);
+queue.schedule(req.body.time+'seconds from now', job);
+//console.log(job.id);
+         console.log("success") ;
+res.status(200).json({
+            "message": "The action has been scheduled"
+        }); 
+}
+
+//-----------------------------------------------------------------------------------------------------
 
 //Return the list of device and their status
 module.exports.deviceList = function(req, res){
@@ -34,6 +82,7 @@ module.exports.deviceList = function(req, res){
 
             var itemsProcessed = 0;
             
+            
             devices.forEach(function(newdevice){
                 console.log(newdevice.device_id); 
                  //var state = help(newdevice.device_id);
@@ -48,7 +97,7 @@ module.exports.deviceList = function(req, res){
                 console.log(device.state);
                 stat =  device.state;
                 console.log("state "+ stat);
-                devicemap.push(newdevice.device_id, stat);
+                devicemap.push({device_id: newdevice.device_id, state: stat});
                     itemsProcessed++;
                  if(itemsProcessed === devices.length) {
                    callback();
@@ -76,6 +125,7 @@ module.exports.addDevice = function(req, res){
         }
         device.update({_id: req.body.device_id}, {$set: {admin: req.payload._id}}, function(err, done) {
             if(err) {
+                console.log(req.params.device_id+" "+err+" IS THE ERROR");
                 res.status(401).json({"message" : "Please enter a valid device id"});
             }
 

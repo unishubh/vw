@@ -17,7 +17,9 @@
     "morgan": "~1.5.1",
     "passport": "^0.2.2",
     "passport-local": "^1.0.0",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "kue": "~0.11.5",
+    "kue-scheduler": "~0.7.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
