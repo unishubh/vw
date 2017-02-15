@@ -21,5 +21,6 @@ router.post('/showDevice', auth, ctrlDevice.deviceList);
 router.post('/device', ctrlDevice.adder);
 router.post('/write', auth, ctrlDevice.write);
 router.post('/delay',auth,ctrlDevice.delayTest);
+router.post('/read', auth,ctrlDevice.read);
 
 module.exports = router; 

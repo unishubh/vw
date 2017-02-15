@@ -2,8 +2,9 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var device = mongoose.model('device');
 var device_user = mongoose.model('device_user');
-const kue = require('kue-scheduler');
-const queue = kue.createQueue();
+var kue = require('kue-scheduler');
+var queue = kue.createQueue();
+var util = require('util');
 //-------------------------------------------------------------------------------------------------------//
 
 module.exports.delayTest = function(req, res){
@@ -182,6 +183,23 @@ module.exports.adder = function(req, res){
 };
 
 //-------------------------------------------------------------------------------------------------------//
+
+module.exports.read = function (req, res){
+
+console.log("req.body.device_id");
+device.findOne({_id:req.body.device_id}, function(err, device1){
+    if(err)
+    {
+        console.log("Some error");
+        res.status(401).json({"message": err});
+    }
+console.log(device1.state );
+//res.status(200).json({"message" : device1.state});
+var t = device1.state+"";
+res.send(t);
+});
+
+};
 
 //Helper function
 var help = function(id){
