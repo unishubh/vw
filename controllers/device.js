@@ -187,7 +187,7 @@ module.exports.adder = function(req, res){
 module.exports.read = function (req, res){
 
 console.log("req.body.device_id");
-device.findOne({_id:req.body.device_id}, function(err, device1){
+device.findOne({_id:req.params.device_id}, function(err, device1){
     if(err)
     {
         console.log("Some error");
