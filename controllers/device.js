@@ -154,7 +154,7 @@ module.exports.addDevice = function(req, res){
 
 //Changing the status of a file
 module.exports.write = function(req, res){
-
+    res.header("Access-Control-Allow-Origin", "*");
     var t = req.body.data;
     device.update({_id : req.body.device_id}, {$set: {state: t}}, function(err, done){
         if(err)
@@ -186,7 +186,7 @@ module.exports.adder = function(req, res){
 
 module.exports.read = function (req, res){
 
-console.log("req.body.device_id");
+console.log("req.body.device_id hai yaha pe");
 device.findOne({_id:req.params.device_id}, function(err, device1){
     if(err)
     {

@@ -29,6 +29,13 @@ app.use(express.static(path.join(__dirname, 'app_client')));
 // [SH] Initialise Passport before using the route middleware
 app.use(passport.initialize());
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept,authorization");
+ res.header("Access-Control-Allow-authorization", "*");
+  next();
+});
+
 // [SH] Use the API routes when path starts with /api
 app.use('/api', routesApi);
 app.use(function(req, res) {

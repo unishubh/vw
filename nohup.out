@@ -479,3 +479,213 @@ req.body.device_id
 req.body.device_id
 1
 [0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.735 ms - 1[0m
+[0mGET / [32m- [0m- ms - -[0m
+[0mGET / [32m- [0m- ms - -[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m38.062 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m8.384 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.494 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.830 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.012 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.111 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.637 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.558 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.009 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m7.256 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.690 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.369 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.769 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.560 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.551 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.846 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.414 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.767 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.646 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.403 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.076 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.497 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.428 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.748 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.532 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.454 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.125 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.002 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.458 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.439 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.417 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.618 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.722 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.209 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.455 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.850 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.421 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.689 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.527 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.478 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.500 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.454 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.018 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.468 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.494 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.391 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.818 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m4.272 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.000 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.981 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.065 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m3.623 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.069 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m3.566 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.395 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.558 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.408 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.397 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.063 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.585 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m5.556 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m1.423 ms - 1[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [32m200 [0m2.587 ms - 1[0m
+[0mGET /favicon.ico [32m- [0m- ms - -[0m
+[0mGET /favicon.ico [32m- [0m- ms - -[0m
+[0mGET /favicon.ico [32m- [0m- ms - -[0m
+[0mGET /favicon.ico [32m- [0m- ms - -[0m
+[0mOPTIONS /api/write [32m200 [0m1.060 ms - 4[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [36m304 [0m4.153 ms - -[0m
+[0mGET /favicon.ico [32m- [0m- ms - -[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [36m304 [0m1.355 ms - -[0m
+req.body.device_id
+1
+[0mGET /api/read/58a30b110fe837738d8641be [36m304 [0m1.330 ms - -[0m
+[0mGET /favicon.ico [32m- [0m- ms - -[0m
+[0mGET /favicon.ico [32m- [0m- ms - -[0m
+Mongoose disconnected
+Mongoose disconnected through Heroku app termination
