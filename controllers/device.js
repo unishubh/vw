@@ -57,7 +57,7 @@ res.status(200).json({
 
 //Return the list of device and their status
 module.exports.deviceList = function(req, res){
-
+   console.log("Successfull request from"+req.payload._id);
     if(!req.payload._id){
         res.status(401).json({
             "message": "Please login to see your devices"
@@ -67,6 +67,7 @@ module.exports.deviceList = function(req, res){
  device_user.find({user_id: req.payload._id}, function(err, devices) {
     var devicemap = [];
     if(err){
+	      console.log(err+" was the error");
          res.json({
                 "message": err
             });
@@ -76,14 +77,25 @@ module.exports.deviceList = function(req, res){
         {
             function callback()
             {
-                res.status(200).json(
-            JSON.stringify(devicemap)
-        );
+	  var x = JSON.stringify(devicemap)
+                res.status(200).json({
+         "array" : devicemap }
+       );
+//		res.status(200).json({
+  //          "message": "Done"
+    //    });
             }
 
             var itemsProcessed = 0;
             
-            
+            console.log("Items");
+		console.log(devices.length);
+			if(devices.length == 0) {
+				console.log("Zero");
+				res.status(200).json({
+            "message": "Zero Elements"
+        });
+  }
             devices.forEach(function(newdevice){
                 console.log(newdevice.device_id); 
                  //var state = help(newdevice.device_id);
