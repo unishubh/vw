@@ -14,12 +14,12 @@ var device_userSchema = new mongoose.Schema({
     type: String
     
   },
- /* last_updated_by: {
+  last_updated_by: {
     type: String
   },
   last_updated_at: {
     type: Date
-  } */
+  } 
 });
 
 mongoose.model('device_user', device_userSchema);

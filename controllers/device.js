@@ -12,28 +12,7 @@ module.exports.delayTest = function(req, res){
 
 
 
-//console.log(res.headers);
-   
 
-
-  /*  var job = queue.create('myQueue',{
-        from : 'user',
-        type : 'message',
-        data : {
-            msg: 'This is first attempt to queue'
-        }
-    }).save(function (err) {
-        if(err){
-            console.log(err);
-        }
-        else
-        console.log(job.id);
-         console.log("success") ;
-res.status(200).json({
-            "message": job.id
-        });    });
-   
-*/
 var job = ({
     from: req.payload._id,
     type: 'message',
@@ -99,7 +78,7 @@ module.exports.deviceList = function(req, res){
             devices.forEach(function(newdevice){
                 console.log(newdevice.device_id); 
                  //var state = help(newdevice.device_id);
-                 var stat = 9;
+                 //var stat = 9;
 
                  device.findById(newdevice.device_id, function(err, device) {
 
@@ -168,14 +147,36 @@ module.exports.addDevice = function(req, res){
 module.exports.write = function(req, res){
     res.header("Access-Control-Allow-Origin", "*");
     var t = req.body.data;
-    device.update({_id : req.body.device_id}, {$set: {state: t}}, function(err, done){
-        if(err)
-        {
-            res.status(401).json({"message":err});
+    console.log(req.payload._id);
+    device_user.find({user_id:req.payload._id, device_id:req.body.device_id}, function (err, result){
+
+            if(err)
+            {
+                console.log(err);
+                 res.status(401).json({"message":err});
+            }
+
+            else if(!result.length)
+            {
+                console.log("User does not have the rights to access the device");
+                res.status(403).json({"message":"User does not have the rights to access the device"});
+            }
+
+            else {
+
+                device.update({_id : req.body.device_id}, {$set: {state: t}}, function(err, done){
+                if(err)
+                {
+                    res.status(401).json({"message":err});
+                }
+                console.log(done);
+                res.status(200).json({"message": "Current state "+t});
+                    });
         }
-        console.log(done);
-        res.status(200).json({"message": "Current state "+t});
-    });
+    }); 
+    
+    
+    
 };
 
 //-------------------------------------------------------------------------------------------------------//
@@ -196,9 +197,11 @@ module.exports.adder = function(req, res){
 
 //-------------------------------------------------------------------------------------------------------//
 
+//Function to read the status of a device
+
 module.exports.read = function (req, res){
 
-console.log("req.body.device_id hai yaha pe");
+
 device.findOne({_id:req.params.device_id}, function(err, device1){
     if(err)
     {

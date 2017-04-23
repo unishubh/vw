@@ -49,3 +49,4 @@ process.on('SIGTERM', function() {
 require('./users');
 require('./device');
 require('./device_user');
+require('./sensors');
