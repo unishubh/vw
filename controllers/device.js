@@ -2,6 +2,8 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var device = mongoose.model('device');
 var device_user = mongoose.model('device_user');
+var dataStore = mongoose.model('dataSchemaDemo');
+var appliances = mongoose.model('applianceList');
 var kue = require('kue-scheduler');
 var queue = kue.createQueue();
 var util = require('util');
@@ -115,7 +117,7 @@ module.exports.addDevice = function(req, res){
             "message": "Please login to add a new device"
         });
         }
-        device.update({_id: req.body.device_id}, {$set: {admin: req.payload._id}}, function(err, done) {
+        device.update({_id: req.body.device_id}, {$set: {admin: req.payload._id, appliance_id: req.body.appliance_id}}, function(err, done) {
             if(err) {
                 console.log(req.params.device_id+" "+err+" IS THE ERROR");
                 res.status(401).json({"message" : "Please enter a valid device id"});
@@ -161,8 +163,10 @@ module.exports.write = function(req, res){
                 console.log("User does not have the rights to access the device");
                 res.status(403).json({"message":"User does not have the rights to access the device"});
             }
-
+            
             else {
+                //console.log("Yahan AAya");
+    console.log(result.device_id);
 
                 device.update({_id : req.body.device_id}, {$set: {state: t}}, function(err, done){
                 if(err)
@@ -170,7 +174,21 @@ module.exports.write = function(req, res){
                     res.status(401).json({"message":err});
                 }
                 console.log(done);
-                res.status(200).json({"message": "Current state "+t});
+                newData = new dataStore();
+                newData.state = t;
+                newData.device_id=req.body.device_id;
+                newData.updated_by = req.payload._id;
+                newData.updated_at=Date.now();
+                newData.save(function(err){
+                    if(err)
+                    {
+                        res.status(401).json({"message":err+" Data Storage "});
+                    }
+                    else
+                    {
+                        res.status(200).json({"message": "Updated Successfully"});
+                    }
+                });
                     });
         }
     }); 
@@ -203,6 +221,7 @@ module.exports.read = function (req, res){
 
 
 device.findOne({_id:req.params.device_id}, function(err, device1){
+    console.log(req.params.device_id);
     if(err)
     {
         console.log("Some error");
@@ -215,6 +234,12 @@ res.send(t);
 });
 
 };
+
+
+/*====================================================================================================
+  
+
+====================================================================================================*/ 
 
 //Helper function
 var help = function(id){

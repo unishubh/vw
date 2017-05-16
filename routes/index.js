@@ -11,9 +11,10 @@ var ctrlProfile = require('../controllers/profile');
 var ctrlAuth = require('../controllers/authentication');
 var ctrlDevice = require('../controllers/device');
 var ctrlSensor = require('../controllers/sensors');
+var ctrlUser = require('../controllers/users');
+var ctrlAppliance = require('../controllers/appliance');
 
 router.get('/profile', auth, ctrlProfile.profileRead);
-
 router.post('/register', ctrlAuth.register);
 router.get('/show',ctrlAuth.show);
 router.post('/login', ctrlAuth.login);
@@ -26,5 +27,7 @@ router.get('/read/:device_id',ctrlDevice.read);
 router.get('/readSensor/:sensor_id',ctrlSensor.sensor_read);
 router.post('/addSensor',ctrlSensor.add_sensor);
 router.post('/writeSensor/:sensor_id/:data',ctrlSensor.sensor_write);
+router.post('/addUser',auth,ctrlUser.addUser);
+router.post('/addAppliance', ctrlAppliance.addAppliance);
 
 module.exports = router; 

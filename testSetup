@@ -1,0 +1,11 @@
+//For Localhost
+
+Plug 1: 59162f5a965a1216da9e64f6  (under test)
+
+Plug 2:59162fc6965a1216da9e64f7   (xtraa)
+
+Users:
+unishubham1@gmail.com 45 8989529628  {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1OTE2MzBjZTk2NWExMjE2ZGE5ZTY0ZjgiLCJlbWFpbCI6InVuaXNodWJoYW0xQGdtYWlsLmNvbSIsIm5hbWUiOiJTaHViaGFtIFNodWtsYSIsImV4cCI6MTUwMjQwMjUxMCwiaWF0IjoxNDk0NjI2NTEwfQ.Bbm5qEELsAEciRv1hzh7t-Ve8GTOQ0xmeDUml4VpXMU"}   => 1
+
+unishubham2           45  8989529629  {"token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1OTE2MzEzMTk2NWExMjE2ZGE5ZTY0ZjkiLCJlbWFpbCI6InVuaXNodWJoYW0yQGdtYWlsLmNvbSIsIm5hbWUiOiJTaHViaGFtIFNodWtsYSIsImV4cCI6MTUwMjQwMjYwOSwiaWF0IjoxNDk0NjI2NjA5fQ.Kv6fvswW8WdsQDtDpvBuDlNMfPDskknOWy2ZUBNozmQ"} => 2
+
