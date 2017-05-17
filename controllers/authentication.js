@@ -122,7 +122,7 @@ module.exports.login = function(req, res) {
     } else {
       // If user is not found
      // console.log(req,body.email);
-      res.status(401).json("message","user not found");
+      res.status(401).json({"message":"user not found"});
     }
   })(req, res);
 

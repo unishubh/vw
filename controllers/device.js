@@ -82,15 +82,17 @@ module.exports.deviceList = function(req, res){
                  //var state = help(newdevice.device_id);
                  //var stat = 9;
 
-                 device.findById(newdevice.device_id, function(err, device) {
+                 device.findById(newdevice.device_id, function(err, device1) {
 
                  if(err)
                  {
                 return "error";
                  }
-                console.log(device.state);
-                stat =  device.state;
-                console.log("state "+ stat);
+                 //if(device1.state==NULL)
+                 //console.log(device1._id);
+                console.log(device1.state);
+                stat =  device1.state;
+                //console.log("state "+ stat);
                 devicemap.push({device_id: newdevice.device_id, state: stat});
                     itemsProcessed++;
                  if(itemsProcessed === devices.length) {
