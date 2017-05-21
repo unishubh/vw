@@ -25,7 +25,7 @@ var job = ({
 });
 //console.log(job.from);
 
-var job = queue.createJob('myQueue', job);
+var job = queue.createJob('schedule', job);
 queue.schedule(req.body.time+'seconds from now', job);
 //console.log(job.id);
          console.log("success") ;

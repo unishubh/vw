@@ -6,14 +6,17 @@
 
 //dependencies
 require('../models/device.js');
+require ('../models//plug_data.js');
 var mongoose = require('mongoose');
 var device = mongoose.model('device');
 var path = require('path');
+var dataStore = mongoose.model('dataSchemaDemo');
 
 //require('kue-scheduler') here
 var kue = require('kue-scheduler');
 var Queue = kue.createQueue();
 mongoose.connect("mongodb://localhost/meanAuth");
+console.log("IN the process queue");
 //processing jobs
 Queue.process('schedule', function (job, done) {
   console.log('\nProcessing job with id %s at %s', job.id, new Date());
@@ -25,6 +28,23 @@ Queue.process('schedule', function (job, done) {
         }
         console.log(done);
         //res.status(200).json({"message": "Current state "+t});
+              var  newData = new dataStore();
+                newData.state = job.data.data.state;
+                newData.device_id=job.data.data.device;
+                newData.updated_by = job.from;
+                newData.updated_at=Date.now();
+                newData.save(function(err){
+                    if(err)
+                    {
+                        //res.status(401).json({"message":err+" Data Storage "});
+                        console.log(err);
+                    }
+                    else
+                    {
+                        //res.status(200).json({"message": "Updated Successfully"});
+                        console.log("done");
+                    }
+                });
     });
 
 
