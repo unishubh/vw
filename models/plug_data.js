@@ -51,7 +51,8 @@ var dataSchemaDemo = new mongoose.Schema({
     device_id : String,
     updated_by: String,
     value: Number,
-    updated_at:Date
+    updated_at:Date,
+    state: Number
 });
 
 mongoose.model('dataSchemaDemo',dataSchemaDemo);
