@@ -49,3 +49,7 @@ process.on('SIGTERM', function() {
 require('./users');
 require('./device');
 require('./device_user');
+require('./sensors');
+require('./plug_data');
+require('./appliances');
+require('./plug_data');

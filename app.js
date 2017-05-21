@@ -11,6 +11,7 @@ var passport = require('passport');
 require('./models/db');
 require('./config/passport');
 
+
 var routesApi = require('./routes/index');
 var app = express();
 app.set('views', path.join(__dirname, 'views'));

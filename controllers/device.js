@@ -2,6 +2,8 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var device = mongoose.model('device');
 var device_user = mongoose.model('device_user');
+var dataStore = mongoose.model('dataSchemaDemo');
+var appliances = mongoose.model('applianceList');
 var kue = require('kue-scheduler');
 var queue = kue.createQueue();
 var util = require('util');
@@ -12,28 +14,7 @@ module.exports.delayTest = function(req, res){
 
 
 
-//console.log(res.headers);
-   
 
-
-  /*  var job = queue.create('myQueue',{
-        from : 'user',
-        type : 'message',
-        data : {
-            msg: 'This is first attempt to queue'
-        }
-    }).save(function (err) {
-        if(err){
-            console.log(err);
-        }
-        else
-        console.log(job.id);
-         console.log("success") ;
-res.status(200).json({
-            "message": job.id
-        });    });
-   
-*/
 var job = ({
     from: req.payload._id,
     type: 'message',
@@ -44,7 +25,7 @@ var job = ({
 });
 //console.log(job.from);
 
-var job = queue.createJob('myQueue', job);
+var job = queue.createJob('schedule', job);
 queue.schedule(req.body.time+'seconds from now', job);
 //console.log(job.id);
          console.log("success") ;
@@ -99,17 +80,19 @@ module.exports.deviceList = function(req, res){
             devices.forEach(function(newdevice){
                 console.log(newdevice.device_id); 
                  //var state = help(newdevice.device_id);
-                 var stat = 9;
+                 //var stat = 9;
 
-                 device.findById(newdevice.device_id, function(err, device) {
+                 device.findById(newdevice.device_id, function(err, device1) {
 
                  if(err)
                  {
                 return "error";
                  }
-                console.log(device.state);
-                stat =  device.state;
-                console.log("state "+ stat);
+                 //if(device1.state==NULL)
+                 //console.log(device1._id);
+                console.log(device1.state);
+                stat =  device1.state;
+                //console.log("state "+ stat);
                 devicemap.push({device_id: newdevice.device_id, state: stat});
                     itemsProcessed++;
                  if(itemsProcessed === devices.length) {
@@ -136,7 +119,7 @@ module.exports.addDevice = function(req, res){
             "message": "Please login to add a new device"
         });
         }
-        device.update({_id: req.body.device_id}, {$set: {admin: req.payload._id}}, function(err, done) {
+        device.update({_id: req.body.device_id}, {$set: {admin: req.payload._id, appliance_id: req.body.appliance_id}}, function(err, done) {
             if(err) {
                 console.log(req.params.device_id+" "+err+" IS THE ERROR");
                 res.status(401).json({"message" : "Please enter a valid device id"});
@@ -168,14 +151,52 @@ module.exports.addDevice = function(req, res){
 module.exports.write = function(req, res){
     res.header("Access-Control-Allow-Origin", "*");
     var t = req.body.data;
-    device.update({_id : req.body.device_id}, {$set: {state: t}}, function(err, done){
-        if(err)
-        {
-            res.status(401).json({"message":err});
+    console.log(req.payload._id);
+    device_user.find({user_id:req.payload._id, device_id:req.body.device_id}, function (err, result){
+
+            if(err)
+            {
+                console.log(err);
+                 res.status(401).json({"message":err});
+            }
+
+            else if(!result.length)
+            {
+                console.log("User does not have the rights to access the device");
+                res.status(403).json({"message":"User does not have the rights to access the device"});
+            }
+            
+            else {
+                //console.log("Yahan AAya");
+    console.log(result.device_id);
+
+                device.update({_id : req.body.device_id}, {$set: {state: t}}, function(err, done){
+                if(err)
+                {
+                    res.status(401).json({"message":err});
+                }
+                console.log(done);
+                newData = new dataStore();
+                newData.state = t;
+                newData.device_id=req.body.device_id;
+                newData.updated_by = req.payload._id;
+                newData.updated_at=Date.now();
+                newData.save(function(err){
+                    if(err)
+                    {
+                        res.status(401).json({"message":err+" Data Storage "});
+                    }
+                    else
+                    {
+                        res.status(200).json({"message": "Updated Successfully"});
+                    }
+                });
+                    });
         }
-        console.log(done);
-        res.status(200).json({"message": "Current state "+t});
-    });
+    }); 
+    
+    
+    
 };
 
 //-------------------------------------------------------------------------------------------------------//
@@ -196,10 +217,13 @@ module.exports.adder = function(req, res){
 
 //-------------------------------------------------------------------------------------------------------//
 
+//Function to read the status of a device
+
 module.exports.read = function (req, res){
 
-console.log("req.body.device_id hai yaha pe");
+
 device.findOne({_id:req.params.device_id}, function(err, device1){
+    console.log(req.params.device_id);
     if(err)
     {
         console.log("Some error");
@@ -212,6 +236,12 @@ res.send(t);
 });
 
 };
+
+
+/*====================================================================================================
+  
+
+====================================================================================================*/ 
 
 //Helper function
 var help = function(id){

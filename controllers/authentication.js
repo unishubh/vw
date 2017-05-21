@@ -1,6 +1,6 @@
 var passport = require('passport');
 var mongoose = require('mongoose');
-var User = mongoose.model('User');
+var User = mongoose.model('user');
 
 
 var sendJSONresponse = function(res, status, content) {
@@ -8,8 +8,12 @@ var sendJSONresponse = function(res, status, content) {
     res.json(content);
 }
 
+
+/*------------------------------Function to register new user-------------------------------------------- */
 module.exports.register = function(req, res) {
     var flag = 0;
+
+    //----- Check to see if user with same details already esist-------------//
     User.findOne({$or: [ {email: req.body.email}, {phone_num: req.body.phone_num} ] }, function(err, user){
         if(err){
          res.json({
@@ -26,8 +30,9 @@ module.exports.register = function(req, res) {
                return;
         }
 
-         console.log(flag);
-     console.log("No user found", req.body.email);
+      //-------------Processing Input-------------------//  
+
+        
      var user = new User();
      user.name = req.body.name;
      user.email = req.body.email;
@@ -43,7 +48,7 @@ module.exports.register = function(req, res) {
          {
              res.send(err);
          }
-         console.log("saving");
+  //----Generating JWT ----------------------//      
     var token;
     token = user.generateJwt();
     console.log(user.email);
@@ -62,6 +67,9 @@ module.exports.register = function(req, res) {
     
     
 };
+
+/*------ Function to return the devices associated by the user------------------*/
+
 
 module.exports.show = function(req, res) {
 
@@ -114,7 +122,7 @@ module.exports.login = function(req, res) {
     } else {
       // If user is not found
      // console.log(req,body.email);
-      res.status(401).json("message","user not found");
+      res.status(401).json({"message":"user not found"});
     }
   })(req, res);
 

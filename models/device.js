@@ -15,6 +15,12 @@ var deviceSchema = new mongoose.Schema({
     default : null
     
   },
+
+  appliance_id: {
+    type: String,
+    default: null
+  },
+
   last_updated_by: {
     type: String,
     default: null
