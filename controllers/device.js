@@ -1,3 +1,5 @@
+
+
 var passport = require('passport');
 var mongoose = require('mongoose');
 var device = mongoose.model('device');
@@ -229,10 +231,13 @@ device.findOne({_id:req.params.device_id}, function(err, device1){
         console.log("Some error");
         res.status(401).json({"message": err});
     }
+     else
+{
 console.log(device1.state );
 //res.status(200).json({"message" : device1.state});
 var t = device1.state+"";
 res.send(t);
+}
 });
 
 };
